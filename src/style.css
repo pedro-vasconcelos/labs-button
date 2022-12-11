@@ -1,4 +1,5 @@
 @import "./theme/button.css";
+@import "./theme/x-button.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

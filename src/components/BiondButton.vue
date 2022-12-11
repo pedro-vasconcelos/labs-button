@@ -77,7 +77,7 @@ const defaultAriaLabel = computed(() => {
     return props.label ? props.label + (props.badge ? ' ' + props.badge : '') : attrs['aria-label'];
 })
 
-console.log(attrs)
+// console.log(attrs)
 
 </script>
 <template>

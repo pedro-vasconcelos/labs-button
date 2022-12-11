@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+  <pre>
+{
+    iconPack: "fas",
+    iconComponent: "vue-fontawesome",
+    button: {
+        override: true,
+        rootClass: {
+            override: true,
+            class: 'btn',
+        },
+        variantClass: (variant, context) => {
+          if (!context.props.outlined) {
+              return `btn-${variant}`
+          }
+        },
+        outlinedClass: 'btn-{variant}-outlined',
+        invertedClass: 'btn-{variant}-inverted',
+        disabledClass: 'btn-disable',
+        labelClass: 'btn-label',
+        sizeClass: 'btn-',
+    },
+    icon: {
+        override: true,
+    }
+}
+  </pre>
+  <div id="app">
+      <label>Path: </label>
+      <input type="text" v-model="path"/><br>
+      <label>Default value: </label>
+      <input type="text" v-model="default_value"/><br>
+      <button @click="go">Find</button><br>
+      {{ result }}
+  </div>
+  <script>
+      const { createApp } = Vue
+
+      function getValueByPath(nestedObj, path, defaultValue = undefined) {
+// console.log('----------------------- START: getValueByPath -----------------------')
+// console.info(nestedObj, path, defaultValue)
+// console.info(path.split('.'))
+          const value = path.split('.').reduce(
+              (obj, key) => {
+                  // console.log('obj:', obj)
+                  // console.log('key: ', key)
+                  // console.log("typeof obj !== 'undefined' ? obj[i] : undefined: ", typeof obj !== 'undefined' ? obj[key] : undefined)
+                  return typeof obj !== 'undefined' ? obj[key] : undefined
+              }
+              ,nestedObj)
+// console.log('value: ' + value)
+// console.log('----------------------- END: getValueByPath -----------------------')
+          return typeof value !== 'undefined' ? value : defaultValue
+      }
+
+      createApp({
+          data() {
+              return {
+                  data: {
+                      iconPack: "fas",
+                      iconComponent: "vue-fontawesome",
+                      button: {
+                          override: true,
+                          rootClass: {
+                              override: true,
+                              class: 'btn',
+                          },
+                          variantClass: (variant, context) => {
+                              if (!context.props.outlined) {
+                                  return `btn-${variant}`
+                              }
+                          },
+                          outlinedClass: 'btn-{variant}-outlined',
+                          invertedClass: 'btn-{variant}-inverted',
+                          disabledClass: 'btn-disable',
+                          labelClass: 'btn-label',
+                          sizeClass: 'btn-',
+                      },
+                      icon: {
+                          override: true,
+                      }
+                  },
+                  result: '',
+                  path: 'button.override',
+                  default_value: 'false',
+              }
+          },
+          methods: {
+              go: function () {
+
+                  this.result = getValueByPath(this.data, this.path, this.default_value)
+              }
+          }
+      }).mount('#app')
+  </script>
+  </body>
+</html>
