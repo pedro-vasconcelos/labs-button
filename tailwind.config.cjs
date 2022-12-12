@@ -11,7 +11,9 @@ module.exports = {
     extend: {
         colors: {
             'primary': colors.purple["600"],
+            'primary-hover': colors.purple["700"],
             'danger': colors.red["600"],
+            'danger-hover': colors.red["700"],
         }
     },
   },

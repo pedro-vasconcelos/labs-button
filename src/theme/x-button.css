@@ -1,48 +1,4 @@
 @layer components {
-    /* Base */
-    .btn {
-        @apply inline-flex items-center border border-transparent shadow-sm rounded-md select-none
-        px-4 py-2 text-base
-        bg-primary focus:ring-primary
-        hover:brightness-90
-        focus:outline-none focus:ring-2 focus:ring-offset-2 text-white;
-    }
-    .btn-label {
-        @apply flex items-center gap-x-2
-    }
-    /* Disable */
-    .btn-disable {
-        @apply opacity-50 pointer-events-none cursor-not-allowed;
-    }
-    /* Sizes */
-    .btn-extra-small {
-        @apply px-2.5 py-1.5 text-xs rounded;
-    }
-    .btn-small {
-        @apply px-3 py-2 text-sm leading-4;
-    }
-    .btn-medium {
-        @apply px-4 py-2 text-sm;
-    }
-    .btn-large {
-        @apply px-4 py-2 text-base;
-    }
-    .btn-extra-large {
-        @apply px-6 py-3 text-lg;
-    }
-    /* Variant: Primary */
-    .btn-primary {
-        @apply bg-primary focus:ring-primary;
-    }
-    .btn-outlined, .btn-primary-outlined {
-        @apply bg-transparent shadow-none border border-primary text-primary
-        hover:bg-primary hover:border-transparent hover:text-white
-        focus:outline-none focus:ring-0;
-    }
-    .btn-inverted, .btn-primary-inverted {
-        @apply bg-white shadow-none border-none text-primary focus:ring-primary
-        hover:bg-white hover:brightness-95
-    }
     /* Variant: Danger */
     .btn-danger {
         @apply bg-danger focus:ring-danger;

@@ -38,6 +38,7 @@ import Icon from './Icon.vue'
 import { getOptions } from './config'
 import BaseComponentMixin from './BaseComponentMixin'
 import { getValueByPath } from './helpers'
+import theme from './baseTheme'
 
 /**
  * The classic button, in different colors, sizes, and states
@@ -93,10 +94,6 @@ export default defineComponent({
      * Outlined style
      */
     outlined: Boolean,
-    /**
-     * Button will be expanded (full-width)
-     */
-    expanded: Boolean,
     inverted: Boolean,
     /**
      * Button type, like native
@@ -130,7 +127,6 @@ export default defineComponent({
     rootClass: [String, Function, Array],
     outlinedClass: [String, Function, Array],
     invertedClass: [String, Function, Array],
-    expandedClass: [String, Function, Array],
     roundedClass: [String, Function, Array],
     disabledClass: [String, Function, Array],
     iconClass: [String, Function, Array],
@@ -143,21 +139,23 @@ export default defineComponent({
   computed: {
     rootClasses() {
       return [
-        this.resolveClass('rootClass', 'x-btn'),
-        { [this.resolveClass('sizeClass', 'x-btn--', this.size)]: this.size },
-        { [this.resolveClass('variantClass', 'x-btn--', this.variant)]: this.variant },
-        { [this.resolveClass('outlinedClass', 'x-btn--outlined')]: this.outlined && !this.variant },
-        { [this.resolveClass('invertedClass', 'x-btn--inverted')]: this.inverted && !this.variant },
-        { [this.resolveClass('outlinedClass', 'x-btn--outlined-', this.variant)]: this.outlined && this.variant },
-        { [this.resolveClass('invertedClass', 'x-btn--inverted-', this.variant)]: this.inverted && this.variant },
-        { [this.resolveClass('expandedClass', 'x-btn--expanded')]: this.expanded },
-        { [this.resolveClass('roundedClass', 'x-btn--rounded')]: this.rounded },
-        { [this.resolveClass('disabledClass', 'x-btn--disabled')]: this.disabled },
+        this.resolveClass('rootClass', theme.rootClass),
+        { [this.resolveClass(this.resolveVariants('sizeClass', this.size), theme[this.resolveVariants('sizeClass', this.size)])]: typeof this.size !== undefined },
+        { [this.resolveClass(this.resolveVariants('variantClass', this.variant), theme[this.resolveVariants('variantClass', this.variant)])]: this.variant && !this.outlined && !this.inverted },
+
+        { [this.resolveClass('outlinedClass', theme.outlinedClass)]: this.outlined && !this.variant },
+        { [this.resolveClass(this.resolveVariants('outlinedVariantClass', this.variant), theme[this.resolveVariants('outlinedVariantClass', this.variant)])]: this.outlined && this.variant },
+
+        { [this.resolveClass('invertedClass', theme.invertedClass)]: this.inverted && !this.variant },
+        { [this.resolveClass(this.resolveVariants('invertedVariantClass', this.variant), theme[this.resolveVariants('invertedVariantClass', this.variant)])]: this.inverted && this.variant },
+
+        { [this.resolveClass('roundedClass', theme.roundedClass)]: this.rounded },
+        { [this.resolveClass('disabledClass', theme.disabledClass)]: this.disabled },
       ]
     },
     labelClasses() {
       return [
-        this.resolveClass('labelClass', 'o-btn__label'),
+        this.resolveClass('labelClass', theme.labelClass),
       ]
     },
     iconClasses() {
