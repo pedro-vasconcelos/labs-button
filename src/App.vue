@@ -9,12 +9,12 @@ const xpto = (_, context) => {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-4">
+  <div class="grid grid-cols-3 gap-4">
     <div></div>
-    <div class="col-span-3">Primary</div>
+    <div class="col-span-2">Primary</div>
 
     <div>Simple</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
           <XButton :size="item">Button text</XButton>
@@ -23,7 +23,7 @@ const xpto = (_, context) => {
     </div>
 
     <div>Outline</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
           <XButton :size="item" outlined>Button text</XButton>
@@ -32,7 +32,7 @@ const xpto = (_, context) => {
     </div>
 
     <div>Outline</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
           <XButton :size="item" inverted>Button text</XButton>
@@ -41,7 +41,7 @@ const xpto = (_, context) => {
     </div>
 
     <div>Outline</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
           <XButton :size="item" disabled>Button text</XButton>
@@ -50,7 +50,7 @@ const xpto = (_, context) => {
     </div>
 
     <div>Loading</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
           <XButton disabled variant="primary" :size="item">
@@ -66,10 +66,10 @@ const xpto = (_, context) => {
     </div>
 
     <div>Size with icon left</div>
-    <div class="col-span-3">
+    <div class="col-span-2">
       <div class="space-x-4">
         <template v-for="item in ['extra-small','small','medium','large','extra-large']">
-          <XButton disabled variant="primary" :size="item">
+          <XButton variant="primary" :size="item">
             <o-icon
                 override
                 pack="fas" icon="envelope"
@@ -83,24 +83,52 @@ const xpto = (_, context) => {
 
 
     <div>Size with icon right</div>
-    <div class="col-span-3">
-      <div class="space-x-4">
-        <template v-for="item in ['extra-small','small','medium','large','extra-large']">
-          <XButton disabled variant="primary" :size="item">
-            <span>Button text</span>
-            <o-icon
-                override
-                pack="fas" icon="envelope"
-                customClass="w-3 h-3 mb-0.5 align-middle inline-block"
-            ></o-icon>
-          </XButton>
-        </template>
-      </div>
-    </div>
-
+    <div class="col-span-2">F</div>
   </div>
 
   <div class="flex flex-col w-full items-center justify-center p-20 gap-y-5">
+    <div class="space-x-4">
+      <XButton disabled variant="danger" size="extra-small">
+        <o-icon
+        override
+        pack="fas" icon="circle-notch"
+        customClass="w-3 h-3 mb-0.5 align-middle inline-block animate-spin"
+        ></o-icon>
+        <span>Loading...</span>
+      </XButton>
+      <XButton disabled variant="danger" size="small">
+        <o-icon
+        override
+        pack="fas" icon="circle-notch"
+        customClass="w-3.5 h-3.5 mb-0.5 align-middle inline-block animate-spin"
+        ></o-icon>
+        <span>Loading...</span>
+      </XButton>
+      <XButton disabled variant="danger" size="medium">
+        <o-icon
+        override
+        pack="fas" icon="circle-notch"
+        customClass="w-4 h-4 mb-0.5 align-middle inline-block animate-spin"
+        ></o-icon>
+        <span>Loading...</span>
+      </XButton>
+      <XButton disabled variant="danger" size="large">
+        <o-icon
+        override
+        pack="fas" icon="circle-notch"
+        customClass="w-5 h-5 mb-0.5 align-middle inline-block animate-spin"
+        ></o-icon>
+        <span>Loading...</span>
+      </XButton>
+      <XButton disabled variant="danger" size="extra-large">
+        <o-icon
+        override
+        pack="fas" icon="circle-notch"
+        customClass="w-5 h-5 mb-0.5 align-middle inline-block animate-spin"
+        ></o-icon>
+        <span>Loading...</span>
+      </XButton>
+    </div>
     <div class="space-x-4">
       <XButton variant="danger" size="extra-small">
         <o-icon
